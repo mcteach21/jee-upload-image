@@ -2,6 +2,8 @@ package mc.afip.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -23,9 +25,7 @@ public class UploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger("Upload Servlet");
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
+	
 
 	public static final String IMAGES_FOLDER = "/assets/photos";    
 	public String uploadPath;
@@ -64,6 +64,12 @@ public class UploadServlet extends HttpServlet {
 		}	
 		return fileName;
 	}
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+	}
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		/**
 		 * Upload file

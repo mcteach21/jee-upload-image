@@ -2,6 +2,8 @@ package mc.afip.main;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,10 +36,33 @@ public class MainServlet extends HttpServlet {
 			display(request, response, VIEW_DIR+"404"+VIEW_SUFFIX);
 		}	
 	}
+	
+	public static final String IMAGES_FOLDER = "/assets/photos"; 
+	public String uploadPath;
+	
+	private List<String> readFiles() {
+		List<String> images = new ArrayList<String>();
+		
+		uploadPath = getServletContext().getRealPath( IMAGES_FOLDER );
+		File uploadDir = new File( uploadPath );
+		
+		File[] listOfFiles = uploadDir.listFiles();
+		for (File file : listOfFiles) {
+		    if (file.isFile()) {
+		    	images.add(file.getName());
+		    	System.out.println(file.getName());
+		    }
+		}	
+		return images;
+	}
+	
 	private void getViewModel(HttpServletRequest request,  String page) {
 		if(page==null)
 			return;
-
+		if(page.equals("gallery")) {
+			List<String> images = readFiles();			
+			request.setAttribute("images", images);
+		}
 	}
 	private boolean view_exists(String view_name) {
 		String view_fullpath = getServletContext().getRealPath(view_name);	
@@ -63,11 +88,10 @@ public class MainServlet extends HttpServlet {
 		request.setAttribute("action", action);
 
 		if(action==null) {
-			display(request, response, VIEW_DIR+"welcome"+VIEW_SUFFIX);
+			//VIEW_DIR+"welcome"+VIEW_SUFFIX
+			display(request, response, "index.jsp");
 			return;
 		}
-
 	}
-
 	
 }

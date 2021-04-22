@@ -26,7 +26,8 @@
 		</ul> 
 		
 		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item"><a class="nav-link" href="./main?page=gallery">Gallery</a></li>
+			<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/">Upload</a></li>
+			<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/main?page=gallery">Gallery</a></li>
 		</ul>
 	</div>
 	

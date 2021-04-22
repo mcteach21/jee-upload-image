@@ -6,11 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Images</title>
+<title>Gallery</title>
 
 <jsp:include page="shared/header.html" />
+<!--  
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
 <script>
 /*
 $(document).ready( function() {
@@ -71,10 +72,10 @@ function save_value(id, title,value ){
 	
 	  <div class="row text-center text-lg-left">
 		
-		<c:forEach begin="1" end="9" step="1">
+		<c:forEach items="${images}" var="image">
 		    <div class="col-lg-3 col-md-4 col-6">
 		      <a href="#" class="d-block mb-4 h-100">
-		            <img class="img-fluid img-thumbnail" src="<%=request.getContextPath()%>/assets/images/avatar.png" alt="">
+		            <img class="img-fluid img-thumbnail" src="<%=request.getContextPath()%>/assets/photos/${image}" alt="">
 		      </a>
 		    </div>
 	    </c:forEach>
